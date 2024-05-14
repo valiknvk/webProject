@@ -9,7 +9,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'cairocoders-ednalan'
  
-DB_HOST = "localhost"
+DB_HOST = "pg"
+#DB_HOST = "localhost"
 DB_NAME = "web"
 DB_USER = "postgres"
 DB_PASS = "123"
