@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  flasklogin:
+    container_name: flogin
+    image: novikva/flasklogin
+    restart: always
+    networks:
+      - fnet
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+  postgres:
+    container_name: pg
+    image: postgres:13.3
+    networks:
+      - fnet
+    environment:
+      POSTGRES_DB: "web"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "123"
+    ports:
+      - "5432:5432"
+networks:
+  fnet:
