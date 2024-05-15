@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flogin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flogin
+  template:
+    metadata:
+      labels:
+        app: flogin
+    spec:
+      containers:
+        - name: flogin #postgres
+          image: 'novikva/flasklogin:latest'
+          imagePullPolicy: Always #IfNotPresent
+          ports:
+            - containerPort: 80
