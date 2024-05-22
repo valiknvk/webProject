@@ -24,5 +24,6 @@ spec:
       containers:
         - name : t1-web
           image: novikva/test:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
