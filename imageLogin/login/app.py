@@ -3,19 +3,20 @@ from flask import Flask, request, session, redirect, url_for, render_template, f
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import re 
+import os
 from datetime import timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
  
 app = Flask(__name__)
-app.secret_key = 'cairocoders-ednalan'
+app.secret_key = 'novikva-secret-key'
  
-DB_HOST = "pg"
+DB_HOST = os.environ.get('POSTGRES_DB_HOST')
 #DB_HOST = "localhost"
-DB_NAME = "web"
-DB_USER = "postgres"
-DB_PASS = "123"
- 
-conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+DB_NAME = os.environ.get('POSTGRES_DB_NAME')
+DB_USER = os.environ.get('POSTGRES_DB_USER')
+DB_PASS = os.environ.get('POSTGRES_DB_PASS')
+DB_PORT = os.environ.get('POSTGRES_DB_PORT') 
+conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT)
 @app.before_request
 def make_session_permanent():
     session.permanent = True
