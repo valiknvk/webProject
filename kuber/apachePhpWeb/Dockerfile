@@ -4,6 +4,7 @@ RUN apt update
 RUN apt install -y apache2 
 RUN apt install -y php 
 RUN apt install -y libapache2-mod-php
+RUN apt install inetutils-ping
 RUN rm /var/www/html/index.html
 COPY ./index.php /var/www/html/index.php
 
