@@ -20,6 +20,9 @@ services:
   postgres:
     container_name: pg
     image: postgres:13.3
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+#      - ./postgres-data:/var/lib/postgresql/data
     networks:
       - fnet
     environment:
@@ -28,5 +31,7 @@ services:
       POSTGRES_PASSWORD: ${PG_PASSWORD}
     ports:
       - "5432:5432"
+volumes:
+  postgres-data:
 networks:
   fnet:
