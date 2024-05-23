@@ -1,5 +1,5 @@
 #app.py
-from flask import Flask, request, session, redirect, url_for, render_template, flash
+from flask import Flask, request, session, redirect, url_for, render_template, flash, jsonify
 import psycopg2 #pip install psycopg2 
 import psycopg2.extras
 import re 
@@ -127,6 +127,10 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/health')
+def health():
+    return render_template('health.html')
  
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port='80')
