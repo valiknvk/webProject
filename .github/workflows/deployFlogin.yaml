@@ -15,8 +15,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${‎{ secrets.SSH_PRIVATE_KEY }‎}
           port: 22
-          source: "./imageLogin/docker-compose.yml,./imageLogin/.env"
-          target: "~/.deploy/${‎{ github.event.repository.name }‎}/"
+          source: "./imageLogin/docker-compose.yml"
+          target: "~/"
 
     
 
