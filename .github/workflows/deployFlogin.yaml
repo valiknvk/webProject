@@ -16,6 +16,6 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: connect, pull and up
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ${{ secrets.WORK_DIR }} && cd ${{ secrets.WORK_DIR }} && docker compose pull && docker compose up -d && exit"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ${{ secrets.WORK_DIR }} && cd ${{ secrets.WORK_DIR }} && echo ${{ vars.COMPOSE }} > docker-compose.yaml && echo ${{ vars.COMPOSE }} > .env && docker compose pull && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
