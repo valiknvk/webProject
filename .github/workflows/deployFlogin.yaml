@@ -31,7 +31,6 @@ jobs:
           port: 22
           envs: HUBTOKEN,USERNAME
           script: |
-            echo $HUBTOKEN | docker login ghcr.io -u $USERNAME --password-stdin
             cd ~/floginDeploy
-            docker compose -f ./docker-compose.yml pull
-            docker compose -f ./docker-compose.yml up -d    
+            docker-compose pull
+            docker-compose up -d    
