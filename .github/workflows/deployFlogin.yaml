@@ -14,12 +14,11 @@ jobs:
       - name: copy files to target server via scp
         uses: appleboy/scp-action@v0.1.3
         with:
-          context: "{{defaultContext}}:imageLogin"
           host: ${‎{ secrets.SSH_HOST }‎}
           username: ${‎{ secrets.SSH_USER }‎}
           port: 22
           key: ${‎{ secrets.SSH_PRIVATE_KEY }‎}
-          source: "./docker-compose.yml,./.env"
+          source: "./imageLogin/docker-compose.yml,./imageLogin/.env"
           target: "~/.deploy/${‎{ github.event.repository.name }‎}/"
 
     
