@@ -17,8 +17,8 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: create and scp docker-compose and env
         run: |
-          echo ${{ vars.COMPOSE }} > docker-compose.yaml
-          echo ${{ vars.ENV }} > .env
+          echo "${{ vars.COMPOSE }}" > docker-compose.yaml
+          echo "${{ vars.ENV }}" > .env
           scp ./docker-compose.yaml ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/${{ secrets.WORK_DIR }}
           scp ./.env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/${{ secrets.WORK_DIR }}
           rm ./docker-compose.yaml
