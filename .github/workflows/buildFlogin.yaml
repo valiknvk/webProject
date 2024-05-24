@@ -26,6 +26,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./imageLogin
+          context: ./imageLogin/
+          file: ./imageLogin/Dockerfile
           tags: novikva/flasklogin:latest
   
