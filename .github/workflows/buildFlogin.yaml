@@ -26,4 +26,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: simplecloudquestions/example_docker:latest
+          tags: novikva/flasklogin:latest
+          file: ./imageLogin/Dockerfile
