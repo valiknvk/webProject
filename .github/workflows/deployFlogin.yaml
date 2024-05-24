@@ -22,8 +22,8 @@ jobs:
       - name: remote docker-compose up via ssh
         uses: appleboy/ssh-action@v0.1.5
         env:
-          APPTOKEN: ${‎{ secrets.DOCKERHUB_TOKEN }‎}
-          USERNAME: ${‎{ secrets.DOCKERHUB_USERNAME }‎}
+          APPTOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
