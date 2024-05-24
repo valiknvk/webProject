@@ -16,10 +16,22 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./imageLogin/docker-compose.yml,./imageLogin/.env"
+          source: "./floginDeploy"
           target: "~/"
-          
-          
-
-    
-
+      # Deploy Docker image with your application using `docker compose up app` remotely
+      - name: remote docker-compose up via ssh
+        uses: appleboy/ssh-action@v0.1.5
+        env:
+          APPTOKEN: ${‎{ secrets.DOCKERHUB_TOKEN }‎}
+          USERNAME: ${‎{ secrets.DOCKERHUB_USERNAME }‎}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          envs: HUBTOKEN,USERNAME
+          script: |
+            echo $HUBTOKEN | docker login ghcr.io -u $USERNAME --password-stdin
+            cd ~/floginDeploy
+            docker compose -f ./docker-compose.yml pull
+            docker compose -f ./docker-compose.yml up -d    
