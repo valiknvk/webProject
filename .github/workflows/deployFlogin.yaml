@@ -34,3 +34,8 @@ jobs:
             cd ~/floginDeploy
             docker-compose pull
             docker-compose up -d    
+  test:
+    runs-on: ubuntu-22.04
+    steps: 
+      - name: healthcheck 
+        run: curl ${{ secrets.HEALTHCHECK_URL }}
