@@ -32,9 +32,11 @@ jobs:
           envs: HUBTOKEN,USERNAME
           script: |
             cd ~/floginDeploy
+            docker-compose down
             docker-compose pull
             docker-compose up -d    
   test:
+    needs: deploy
     runs-on: ubuntu-22.04
     steps: 
       - name: healthcheck 
