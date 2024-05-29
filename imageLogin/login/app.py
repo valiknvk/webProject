@@ -131,6 +131,8 @@ def profile():
 @app.route('/health')
 def health():
     return render_template('health.html')
- 
+@app.route('/about')
+def about(): 
+    return render_template('aboutme.html') 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port='80')
