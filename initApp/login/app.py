@@ -9,8 +9,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'cairocoders-ednalan'
  
-DB_HOST = "pg"
-#DB_HOST = "localhost"
+#DB_HOST = "pg"
+DB_HOST = "localhost"
 DB_NAME = "web"
 DB_USER = "postgres"
 DB_PASS = "123"
@@ -126,6 +126,11 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
- 
+
+@app.route('/about')
+def about(): 
+    return render_template('aboutme.html')
+#    return redirect("http://192.168.64.2", code=302)
+     
 if __name__ == "__main__":
-    app.run(debug=True, host="192.168.64.2")
+    app.run(debug=True, host="192.168.64.2", port=8000)

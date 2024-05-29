@@ -20,7 +20,8 @@ body {
   text-align: center;
   font-family: "vardhana",cursive;
   font-size: 35px;
-  background: linear-gradient(to bottom, #00bfff 0%, #5b6d7c 100%);
+  background: linear-gradient(to bottom, #55367b 0%, #5b6d7c 100%);
+/*  background: linear-gradient(to bottom, #00bfff 0%, #5b6d7c 100%); */
   color:#fff;
   position: relative;
        box-shadow: 1px 3px 14px  rgba(0, 0, 0, .5);
@@ -108,6 +109,15 @@ span.input-group-addon i {
  
 .login-button{
 margin-top: 5px;
+color: #784c88;
+}
+.test-login{
+  transition-duration: 0.4s;
+}
+
+.test-login:hover {
+  background-color: #784c88;
+  color: white;
 }
  
 .login-register{
