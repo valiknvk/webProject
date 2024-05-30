@@ -1,34 +1,36 @@
-//templates/profile.html
 {% extends 'layoutAboutME.html' %}
   
 {% block title %}Profile{% endblock %}
   
 {% block content %}
-<h1>ABOUT ME TEST</h1>
+<h1 class="mb-0">Welcome to my page</h1>
+<span class="d-none d-lg-block">
+    <img class="img-fluid img-profile mx-auto" src="{{ url_for('static', filename='images/me.jpg') }}" style="max-width: 30%" alt="">
+</span>
 <div>
-    <p>Your account details are below:</p>
-</div>
+    <p class="mb-3">A few words about myself below</p>
+</div> 
 <div class="container-fluid p-0">
 
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
         <div class="my-auto">
-          <h1 class="mb-0">Valiantsin
-            <span class="text-primary">Novik</span>
+          <h1 class="mb-5">Valiantsin
+            <span class="mb-5" style="color: #007bff !important;">Novik</span>
           </h1>
-          <div class="subheading mb-5">Minsk · Belarus, CO 220123 · +375(29) 220-01-15 ·
+          <div class="subheading mb-3">Minsk · Belarus, CO 220123 · +375(29) 220-01-15 ·
             <a href="mailto:novik.valik@mail.ru">novik.valik@mail.ru</a>
           </div>
-          <p class="mb-5">Experiensed in Linux servers administration. Beginning devops engineer</p>
+          <p class="pstyle">Experiensed in Linux servers administration. Beginning devops engineer</p>
           <ul class="list-inline list-social-icons mb-0">
-            <li class="list-inline-item">
+            <li class="list-inline-item" style="font-size: 1rem;">
               <a href="#">
-                <span class="fa-stack fa-lg">
+                <span class="fa-stack fa-lg"">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item" style="font-size: 1rem;">
               <a href="#">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
@@ -36,7 +38,7 @@
                 </span>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item" style="font-size: 1rem;">
               <a href="https://github.com/valiknvk">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
@@ -47,26 +49,26 @@
           </ul>
         </div>
       </section>
-     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
         <div class="my-auto">
-          <h2 class="mb-5">Experience</h2>
+          <h2 class="mb-5" style="font-family: 'Saira Extra Condensed',serif;" id="head2">Experience</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+          <div class="resume-item d-flex flex-column flex-md-row">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Linux Administrator</h3>
-              <div class="subheading mb-3">Ministry of Defense ( Data center )</div>
-              <p> Full chain of linux server architecture. Virtualization and cloud computing technolog
+              <div class="mb-3">Ministry of Defense ( Data center )</div>
+              <p class="pstyle"> Full chain of linux server architecture. Virtualization and cloud computing technolog
             </div>
             <div class="resume-date text-md-right">
-              <span class="text-primary" style="width: 200px;">May 2017 - May 2020</span>
+              <span class="text-primary">May 2017 - May 2020</span>
             </div>
           </div>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Linux Administrator</h3>
-              <div class="subheading mb-3">Ministry of Defense ( Data center )</div>
-              <p> Full chain of linux server architecture. Virtualization and cloud computing technolog
+              <div class="mb-3">Ministry of Defense ( Data center )</div>
+              <p class="pstyle"> Full chain of linux server architecture. Virtualization and cloud computing technolog
             </div>
             <div class="resume-date text-md-right">
               <span class="text-primary">July 2021 - Present</span>
@@ -78,16 +80,16 @@
 
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education" style="padding-top: 3rem !important; padding-bottom: 3rem !important; min-height: 100vh; border-bottom: 1px solid #dee2e6;">
         <div class="my-auto">
-          <h2 class="mb-5">Education</h2>
+          <h2 id="head2">Education</h2>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">University of Colorado Boulder</h3>
-              <div class="subheading mb-3">Bachelor of Science</div>
-              <div>Computer Science - Web Development Track</div>
-              <p>GPA: 3.23</p>
+              <div class="mb-3">Bachelor of Science</div>
+              <div class="pstyle">Computer Science - Web Development Track</div>
+              <p class="pstyle">GPA: 3.23</p>
             </div>
             <div class="resume-date text-md-right">
               <span class="text-primary">August 2006 - May 2010</span>
@@ -97,7 +99,7 @@
           <div class="resume-item d-flex flex-column flex-md-row">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">James Buchanan High School</h3>
-              <div class="subheading mb-3">Technology Magnet Program</div>
+              <div class="mb-3">Technology Magnet Program</div>
               <p>GPA: 3.56</p>
             </div>
             <div class="resume-date text-md-right">
@@ -108,9 +110,9 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
         <div class="my-auto">
-          <h2 class="mb-5">Skills</h2>
+          <h2 class="mb-5" id="head2">Skills</h2>
   <div class="subheading mb-3">Programming Languages &amp; Tools</div>
           <ul class="list-inline list-icons">
             <li class="list-inline-item">
@@ -148,7 +150,7 @@
             </li>
           </ul>
 
-          <div class="subheading mb-3">Workflow</div>
+          <div class="mb-3">Workflow</div>
           <ul class="fa-ul mb-0">
             <li>
               <i class="fa-li fa fa-check"></i>
@@ -166,7 +168,7 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
         <div class="my-auto">
           <h2 class="mb-5">Interests</h2>
           <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I>
@@ -174,9 +176,9 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards" style="min-height: 100vh; border-bottom: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
         <div class="my-auto">
-          <h2 class="mb-5">Awards &amp; Certifications</h2>
+          <h2 class="mb-5" id="head2">Awards &amp; Certifications</h2>
           <ul class="fa-ul mb-0">
             <li>
               <i class="fa-li fa fa-trophy text-warning"></i>
