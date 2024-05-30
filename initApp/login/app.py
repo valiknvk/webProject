@@ -129,8 +129,12 @@ def profile():
 
 @app.route('/about')
 def about(): 
-    return render_template('aboutme.html')
-#    return redirect("http://192.168.64.2", code=302)
-     
+    if 'loggedin' in session:
+    
+        # User is loggedin show them the home page
+        return render_template('aboutme.html')
+    # User is not loggedin redirect to login page
+    return redirect(url_for('login'))
+
 if __name__ == "__main__":
     app.run(debug=True, host="192.168.64.2", port=8000)
