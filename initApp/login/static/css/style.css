@@ -133,3 +133,74 @@ text-align: center;
 .site-header a { 
 color:#fff;
 }
+.mb-5 {
+  margin-bottom: 3rem !important;
+  /*color: #343a40;
+  line-height: 1.2;*/
+  font-family: 'Saira Extra Condensed',serif; 
+  font-weight: 700;
+  text-transform: uppercase; 
+  font-size: 3.5rem;
+  margin-top: 0;
+  line-height: 1.2;
+  color: #343a40;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+  font-family: 'Saira Extra Condensed',serif; 
+  font-weight: 700;
+  text-transform: uppercase; 
+  font-size: 1.75rem;
+  margin-top: 0;
+  line-height: 1.2;
+  color: #343a40;
+}
+.mb-3 {
+  margin-bottom: 1rem !important;
+  font-family: 'Saira Extra Condensed',serif;
+  font-weight: 500;
+  text-transform: uppercase; 
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: #868e96;
+}
+.my-auto {
+  margin-bottom: auto !important;
+  margin-top: auto !important;
+  ont-family: 'Open Sans',serif;
+  color: #868e96;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+
+}
+.pstyle {
+  font-family: 'Open Sans',serif;
+  /*color: #868e96;*/
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  text-transform: initial;
+}
+.pstyle-main {
+  font-family: 'Open Sans',serif;
+  /*color: #868e96;*/
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  text-transform: initial;
+}
+
+.text-primary {
+  text-align: right !important;
+  font-family: 'Open Sans',serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
