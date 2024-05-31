@@ -22,8 +22,8 @@ Application is a combination of Pyhton3+Flask backend connected to postgresql an
 CI/CD  implemented using GitHub Actions. Current strategy is manual run image build workflow and then automatically deploy and test.  
 Can be deployed as:
  - program(service) on Linux ( tested ubuntu-22.04 );
- - build as docker image and
-   - run as container ([docker-hub](https://hub.docker.com) public repository - novikva/flasklogin:latest)
+ - build as docker image ([docker-hub](https://hub.docker.com) public repository - novikva/flasklogin:latest) and
+   - run as container 
    - run on Kubernetes ( tested kubeadm cluster )
 
 ## The project status
