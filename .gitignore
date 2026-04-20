@@ -1,1 +1,4 @@
 initApp/.venv/
+floginDeploy/.env
+imageLogin/login/content/portfolio.local.json
+initApp/login/content/portfolio.local.json

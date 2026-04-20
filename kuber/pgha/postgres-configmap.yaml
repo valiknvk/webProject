@@ -7,4 +7,4 @@ metadata:
 data:
   POSTGRES_DB: "web"
   POSTGRES_USER: "postgres"
-  POSTGRES_PASSWORD: "123"
+  POSTGRES_PASSWORD: "change-me"

@@ -2,14 +2,14 @@ version: "3.9"
 services:
   flasklogin:
     container_name: flogin
-    image: novikva/flasklogin:latest
+    image: ${APP_IMAGE}
     environment:
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
       POSTGRES_DB_USER: ${PG_USERNAME}
       POSTGRES_DB_PASS: ${PG_PASSWORD}
       POSTGRES_DB_NAME: ${PG_DATABASE}
       POSTGRES_DB_HOST: ${PG_HOST}
       POSTGRES_DB_PORT: ${PG_PORT}
-
     restart: always
     networks:
       - fnet
@@ -17,6 +17,7 @@ services:
       - "8080:80"
     depends_on:
       - postgres
+
   postgres:
     container_name: pg
     image: postgres:13.3
@@ -31,7 +32,9 @@ services:
       POSTGRES_PASSWORD: ${PG_PASSWORD}
     ports:
       - "5432:5432"
+
 volumes:
   postgres-data:
+
 networks:
   fnet:

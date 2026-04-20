@@ -1,215 +1,120 @@
 {% extends 'layoutAboutME.html' %}
-  
-{% block title %}Profile{% endblock %}
-  
+
+{% block title %}Portfolio{% endblock %}
+
 {% block content %}
-<h1 class="mb-0">Welcome to my page</h1>
-<span class="d-none d-lg-block">
-    <img class="img-fluid img-profile mx-auto" src="{{ url_for('static', filename='images/me.jpg') }}" style="max-width: 30%" alt="">
-</span>
-<div>
-    <p class="mb-3">A few words about myself below</p>
-</div> 
+{% set profile = portfolio.profile %}
+{% if portfolio.using_template %}
+<div class="alert alert-info portfolio-alert" role="alert">
+  Template content is active from <code>{{ portfolio.source_path }}</code>.
+  Copy it to <code>content/portfolio.local.json</code> or point <code>PORTFOLIO_PROFILE_PATH</code> to your private file.
+</div>
+{% endif %}
+
 <div class="container-fluid p-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
-        <div class="my-auto">
-          <h1 class="mb-5">Valiantsin
-            <span class="mb-5" style="color: #007bff !important;">Novik</span>
-          </h1>
-          <div class="subheading mb-3">Minsk · Belarus, CO 220123 · +375(29) 220-01-15 ·
-            <a href="mailto:novik.valik@mail.ru">novik.valik@mail.ru</a>
-          </div>
-          <p class="pstyle">Experiensed in Linux servers administration. Beginning devops engineer</p>
-          <ul class="list-inline list-social-icons mb-0">
-            <li class="list-inline-item" style="font-size: 1rem;">
-              <a href="#">
-                <span class="fa-stack fa-lg"">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item" style="font-size: 1rem;">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item" style="font-size: 1rem;">
-              <a href="https://github.com/valiknvk">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
+  <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
+    <div class="my-auto portfolio-hero">
+      <div class="portfolio-avatar" aria-hidden="true">{{ profile.avatar_initials }}</div>
+      <div class="portfolio-copy">
+        <p class="portfolio-kicker">Template driven portfolio</p>
+        <h1 class="mb-5">{{ profile.first_name }}
+          <span class="mb-5" style="color: #007bff !important;">{{ profile.last_name }}</span>
+        </h1>
+        <div class="subheading mb-3">
+          {{ profile.location }}
+          {% if profile.phone %} · {{ profile.phone }}{% endif %}
+          {% if profile.email %} · <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>{% endif %}
         </div>
-      </section>
-     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
-        <div class="my-auto">
-          <h2 class="mb-5" style="font-family: 'Saira Extra Condensed',serif;" id="head2">Experience</h2>
-
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Linux Administrator</h3>
-              <div class="mb-3">Ministry of Defense ( Data center )</div>
-              <p class="pstyle"> Full chain of linux server architecture. Virtualization and cloud computing technolog
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">May 2017 - May 2020</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Linux Administrator</h3>
-              <div class="mb-3">Ministry of Defense ( Data center )</div>
-              <p class="pstyle"> Full chain of linux server architecture. Virtualization and cloud computing technolog
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">July 2021 - Present</span>
-            </div>
-          </div>
-
-
-        </div>
-
-      </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education" style="padding-top: 3rem !important; padding-bottom: 3rem !important; min-height: 100vh; border-bottom: 1px solid #dee2e6;">
-        <div class="my-auto">
-          <h2 id="head2">Education</h2>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">University of Colorado Boulder</h3>
-              <div class="mb-3">Bachelor of Science</div>
-              <div class="pstyle">Computer Science - Web Development Track</div>
-              <p class="pstyle">GPA: 3.23</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">August 2006 - May 2010</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">James Buchanan High School</h3>
-              <div class="mb-3">Technology Magnet Program</div>
-              <p>GPA: 3.56</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">August 2002 - May 2006</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
-        <div class="my-auto">
-          <h2 class="mb-5" id="head2">Skills</h2>
-  <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-          <ul class="list-inline list-icons">
-            <li class="list-inline-item">
-              <i class="devicons devicons-html5" style="font-size: 30px;"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-css3"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-javascript"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-jquery"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-sass"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-less"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-bootstrap"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-wordpress"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-grunt"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-gulp"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-npm"></i>
-            </li>
-          </ul>
-
-          <div class="mb-3">Workflow</div>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging</li>
-        <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
-        <div class="my-auto">
-          <h2 class="mb-5">Interests</h2>
-          <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I>
-          <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and>
-        </div>
-      </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards" style="min-height: 100vh; border-bottom: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
-        <div class="my-auto">
-          <h2 class="mb-5" id="head2">Awards &amp; Certifications</h2>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Google Analytics Certified Developer</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Mobile Web Specialist - Google Certification</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2009</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              2<sup>nd</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2008</li>
-            <li>
-          <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - James Buchanan High School - Hackathon 2006</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              3<sup>rd</sup>
-              Place - James Buchanan High School - Hackathon 2005</li>
-          </ul>
-        </div>
-      </section>
-
+        <p class="pstyle">{{ profile.headline }}</p>
+        {% if portfolio.social_links %}
+        <ul class="list-inline list-social-icons mb-0">
+          {% for link in portfolio.social_links %}
+          <li class="list-inline-item" style="font-size: 1rem;">
+            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ link.label }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-{{ link.icon }} fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
     </div>
+  </section>
+
+  {% if portfolio.experience %}
+  <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
+    <div class="my-auto">
+      <h2 class="mb-5" id="head2">Experience</h2>
+      {% for item in portfolio.experience %}
+      <div class="resume-item d-flex flex-column flex-md-row{% if not loop.last %} mb-5{% endif %}">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">{{ item.title }}</h3>
+          <div class="mb-3">{{ item.organization }}</div>
+          <p class="pstyle">{{ item.description }}</p>
+        </div>
+        <div class="resume-date text-md-right">
+          <span class="text-primary">{{ item.period }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if portfolio.education %}
+  <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education" style="padding-top: 3rem !important; padding-bottom: 3rem !important; min-height: 100vh; border-bottom: 1px solid #dee2e6;">
+    <div class="my-auto">
+      <h2 class="mb-5" id="head2">Education</h2>
+      {% for item in portfolio.education %}
+      <div class="resume-item d-flex flex-column flex-md-row{% if not loop.last %} mb-5{% endif %}">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">{{ item.institution }}</h3>
+          <div class="mb-3">{{ item.degree }}</div>
+          {% if item.description %}
+          <p class="pstyle">{{ item.description }}</p>
+          {% endif %}
+        </div>
+        <div class="resume-date text-md-right">
+          <span class="text-primary">{{ item.period }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if portfolio['skills']['items'] %}
+  <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
+    <div class="my-auto">
+      <h2 class="mb-5" id="head2">Skills</h2>
+      <div class="subheading mb-3">{{ portfolio['skills']['heading'] }}</div>
+      <ul class="list-inline list-icons">
+        {% for item in portfolio['skills']['items'] %}
+        <li class="list-inline-item portfolio-skill-item" title="{{ item.label }}">
+          {% if item.icon_class %}
+          <i class="icons {{ item.icon_class }}"></i>
+          {% else %}
+          <span class="portfolio-skill-pill">{{ item.label }}</span>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if portfolio.interests %}
+  <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests" style="min-height: 100vh; border-bottom: 1px solid #dee2e6;">
+    <div class="my-auto">
+      <h2 class="mb-5">Interests</h2>
+      {% for item in portfolio.interests %}
+      <p class="pstyle">{{ item }}</p>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
 {% endblock %}

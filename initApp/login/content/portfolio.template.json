@@ -1,0 +1,84 @@
+{
+  "profile": {
+    "first_name": "Your",
+    "last_name": "Name",
+    "avatar_initials": "YN",
+    "headline": "Add a short introduction about your background, strengths, and the kind of roles or projects you want this portfolio to support.",
+    "location": "City, Country",
+    "phone": "+00 000 000 0000",
+    "email": "you@example.com",
+    "resume_url": "#"
+  },
+  "social_links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/your-handle",
+      "icon": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/your-handle",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:you@example.com",
+      "icon": "envelope"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Role title",
+      "organization": "Company or project",
+      "period": "2024 - Present",
+      "description": "Summarize your impact, technologies, and the kind of work you delivered. Focus on outcomes instead of only responsibilities."
+    },
+    {
+      "title": "Previous role",
+      "organization": "Team or client",
+      "period": "2022 - 2024",
+      "description": "Add another experience item to show progression, ownership, and the problems you solved."
+    }
+  ],
+  "education": [
+    {
+      "institution": "University or course provider",
+      "degree": "Degree, certification, or training program",
+      "period": "2020 - 2024",
+      "description": "Optional context about your focus, specialization, or relevant achievements."
+    }
+  ],
+  "skills": {
+    "heading": "Tools and technologies",
+    "items": [
+      {
+        "label": "Python",
+        "icon_class": "devicon-python-plain-wordmark"
+      },
+      {
+        "label": "Docker",
+        "icon_class": "devicon-docker-plain-wordmark"
+      },
+      {
+        "label": "Kubernetes",
+        "icon_class": "devicon-kubernetes-plain-wordmark"
+      },
+      {
+        "label": "Terraform",
+        "icon_class": "devicon-terraform-plain-wordmark"
+      },
+      {
+        "label": "Git",
+        "icon_class": "devicon-git-plain-wordmark"
+      },
+      {
+        "label": "Linux",
+        "icon_class": "devicon-linux-plain"
+      }
+    ]
+  },
+  "interests": [
+    "Replace this with a short paragraph about what you enjoy building, learning, or doing outside of work.",
+    "You can also use this section for community work, side projects, or broader professional interests."
+  ]
+}

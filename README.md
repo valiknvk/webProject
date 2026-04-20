@@ -1,30 +1,31 @@
 # Basic Web Portfolio
 
 ## Introduction
-Web application with a login functionality. Displays short user account info and "about me" page.  
-Developed to demonstrate technical skills for DevOps engineer.  
-Can be accessed [here](https://vn.dev-space.co) (Just sign up and test)  
+Web application with login functionality, a user profile page, and a template-driven portfolio page.
+The repository is sanitized so personal details live outside tracked source files.
 
-## Tasks
- - [x] Available on the internet webpage with domain and TLS/SSL certs.
- - [x] Possibility of a multi-platform deploy with CI/CD. 
+## What changed
+- Personal profile content moved into JSON-based portfolio templates.
+- Deployment samples now use placeholders instead of personal domains, image names, and credentials.
+- Application settings load from environment variables instead of hard-coded secrets.
 
 ## Technologies
- - Python3 (Flask)
- - Postgresql 
- - GitHub (GitHub Actions)
- - Linux ( ubuntu-22.04 )
- - Docker (Docker-compose, Docker-hub)
- - k8s ( kubeadm cluster )
+- Python 3 / Flask
+- PostgreSQL
+- Docker / Docker Compose
+- Kubernetes manifests
 
-## Description
-Application is a combination of Pyhton3+Flask backend connected to postgresql and simple frontend.  
-CI/CD  implemented using GitHub Actions. Current strategy is manual run image build workflow and then automatically deploy and test.  
-Can be deployed as:
- - program(service) on Linux ( tested ubuntu-22.04 );
- - build as docker image ([docker-hub](https://hub.docker.com) public repository - novikva/flasklogin:latest) and
-   - run as container 
-   - run on Kubernetes ( tested kubeadm cluster )
+## Portfolio customization
+1. Copy `imageLogin/login/content/portfolio.template.json` to `imageLogin/login/content/portfolio.local.json`.
+2. Update the copied file with your own public portfolio data.
+3. Optionally set `PORTFOLIO_PROFILE_PATH` to load the file from another private location.
 
-## The project status
-Active: The project is currently being worked in my spare time.
+Apply the same pattern for `initApp/login` if you still use that starter app.
+
+## Environment configuration
+- Copy `floginDeploy/.env.example` to `floginDeploy/.env` for local compose usage.
+- Set `FLASK_SECRET_KEY` and PostgreSQL variables before running in any real environment.
+- Replace placeholder container images in Docker/Kubernetes manifests with your own registry paths.
+
+## Project status
+The codebase now includes the first privacy-focused refactor. The next logical cleanup is deduplicating `initApp` and `imageLogin` into one reusable Flask package.

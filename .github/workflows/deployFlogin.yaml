@@ -1,49 +1,69 @@
-name: Deploy 
+name: Deploy
 
-#on:
-#  push:
-#    branches:
-#      - main
-on: 
+on:
   workflow_run:
-    workflows: ['Build Docker Container']
+    workflows: ["Build Docker Container"]
     types:
       - completed
 
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-flogin
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: Deploy Files to server
+        uses: actions/checkout@v4
+
+      - name: Upload database init script
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./floginDeploy"
-          target: "~/"
-      # Deploy Docker image with your application using `docker compose up app` remotely
-      - name: remote docker-compose up via ssh
+          source: "floginDeploy/init.sql"
+          target: ${{ secrets.WORK_DIR }}
+          strip_components: 1
+
+      - name: Remote docker compose deploy via SSH
         uses: appleboy/ssh-action@v0.1.5
         env:
-          APPTOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_COMPOSE_CONTENT: ${{ secrets.DOCKER_COMPOSE }}
+          DEPLOY_ENV: ${{ secrets.ENV }}
+          WORK_DIR: ${{ secrets.WORK_DIR }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          envs: HUBTOKEN,USERNAME
+          envs: DOCKERHUB_TOKEN,DOCKERHUB_USERNAME,DOCKER_COMPOSE_CONTENT,DEPLOY_ENV,WORK_DIR
           script: |
-            cd ~/floginDeploy
-            docker-compose down
-            docker-compose pull
-            docker-compose up -d    
+            mkdir -p "$WORK_DIR"
+            cat > "$WORK_DIR/docker-compose.yaml" <<EOF
+            $DOCKER_COMPOSE_CONTENT
+            EOF
+            cat > "$WORK_DIR/.env" <<EOF
+            $DEPLOY_ENV
+            APP_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/flasklogin:${{ github.event.workflow_run.head_sha }}
+            EOF
+
+            cd "$WORK_DIR"
+            printf '%s' "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker compose pull
+            docker compose up -d --remove-orphans
+
   test:
     needs: deploy
     runs-on: ubuntu-22.04
-    steps: 
-      - name: healthcheck 
-        run: curl ${{ secrets.HEALTHCHECK_URL }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Healthcheck
+        run: curl -fsS --retry 10 --retry-delay 5 "${{ secrets.HEALTHCHECK_URL }}"

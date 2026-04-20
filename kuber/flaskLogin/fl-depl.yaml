@@ -13,9 +13,9 @@ spec:
         app: flogin
     spec:
       containers:
-        - name: flogin #postgres
-          image: 'novikva/flasklogin:latest'
-          imagePullPolicy: Always #IfNotPresent
+        - name: flogin
+          image: registry.example.com/portfolio-app:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
@@ -31,8 +31,10 @@ spec:
             - name: POSTGRES_DB_USER
               value: postgres
             - name: POSTGRES_DB_NAME
-              value: 'web'
+              value: web
             - name: POSTGRES_DB_PASS
-              value: '123'             
+              value: change-me
             - name: POSTGRES_DB_PORT
-              value: 5432              
+              value: "5432"
+            - name: FLASK_SECRET_KEY
+              value: change-me-before-production
